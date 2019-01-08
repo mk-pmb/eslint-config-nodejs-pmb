@@ -1,0 +1,30 @@
+{ "name": "eslint-config-nodejs-pmb",
+  "version": "0.0.1",
+  "description": "My favorite eslint rules",
+  "keywords": [],
+
+  "author": "M.K. (https://github.com/mk-pmb)",
+  "homepage": "https://github.com/mk-pmb/eslint-config-nodejs-pmb/#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-pmb/eslint-config-nodejs-pmb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mk-pmb/eslint-config-nodejs-pmb/issues"
+  },
+  "contributors": [],
+
+  "private": false, "license": "ISC",
+  "main": "rules.js",
+  "scripts": { "test": "nodejs test/all.js" },
+  "directories": { "test": "test" },
+
+  "dependencies": {
+    "@instaffogmbh/eslint-config-nodejs": "1.2.2"
+  },
+  "devDependencies": {
+  },
+
+
+  "npm vs. BOM = Unexpected token": "-*- coding: UTF-8 -*-"
+}
