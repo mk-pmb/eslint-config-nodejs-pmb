@@ -22,7 +22,7 @@ const rules = {
   'semi': ['error', 'always'],
   'unicode-bom': 'off',
 
-  'quote-props': ['error', 'consistent-as-needed', {
+  'quote-props': ['error', 'as-needed', {
     keywords: true,
     numbers: true,
   }],
