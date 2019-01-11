@@ -21,11 +21,11 @@ const rules = {
   'prefer-template': 'off',
   'semi': ['error', 'always'],
   'unicode-bom': 'off',
+  'no-control-regex': 'off',
+  'no-useless-escape': 'off',   // allow \. in RegExp char group
+  'no-div-regex': 'error',
 
-  'quote-props': ['error', 'as-needed', {
-    keywords: true,
-    numbers: true,
-  }],
+  'quote-props': 'off',
 
   // rules docs: https://github.com/eslint/eslint.github.io/tree/master/docs/rules
 };
