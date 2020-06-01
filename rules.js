@@ -26,6 +26,7 @@ const rules = {
   'no-div-regex': 'error',
   'quote-props': 'off',
   'default-case': 'off',
+  'key-spacing': 'off', // b/c it doesn't support all the combinations I want
 
   // rules docs: https://github.com/eslint/eslint.github.io/tree/master/docs/rules
 };
