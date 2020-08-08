@@ -27,6 +27,7 @@ const rules = {
   'quote-props': 'off',
   'default-case': 'off',
   'key-spacing': 'off', // b/c it doesn't support all the combinations I want
+  'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
 
   // rules docs: https://github.com/eslint/eslint.github.io/tree/master/docs/rules
 };
