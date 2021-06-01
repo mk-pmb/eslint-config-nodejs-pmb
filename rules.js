@@ -29,6 +29,9 @@ const rules = {
   'key-spacing': 'off', // b/c it doesn't support all the combinations I want
   'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
 
+  // Ugly but unfortunately node v12+ native ESM forces us to:
+  'import/extensions': ['error', 'ignorePackages'],
+
   // rules docs: https://github.com/eslint/eslint.github.io/tree/master/docs/rules
 };
 
