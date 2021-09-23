@@ -3,6 +3,28 @@
 
 const instaffo = require('@instaffogmbh/eslint-config-nodejs/rules');
 
+const jsFexts = [...instaffo.settings['import/extensions']];
+jsFexts.mapAppend = function mapAppend(orig) {
+  const normalizedOrig = [].concat(orig).filter(Boolean);
+  function fork(bfn) { return jsFexts.map(fext => bfn + fext); }
+  return normalizedOrig.map(fork).flat();
+};
+
+const extraneousDepsOpts = {
+  devDependencies: [
+    'build/**',
+    ...jsFexts.mapAppend([
+      '**/*.test',
+      '**/test.*',
+      '**/*.spec',
+      '**/.eslintrc',
+      '**/eslintrc',
+      '**/webpack.config',
+    ]),
+  ],
+};
+
+
 const rules = {
   ...instaffo.rules,
 
@@ -28,6 +50,7 @@ const rules = {
   'default-case': 'off',
   'key-spacing': 'off', // b/c it doesn't support all the combinations I want
   'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
+  'import/no-extraneous-dependencies': ['error', extraneousDepsOpts],
 
   // Ugly but unfortunately node v12+ native ESM forces us to:
   'import/extensions': ['error', 'ignorePackages'],
