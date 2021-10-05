@@ -1,5 +1,5 @@
 { "name": "eslint-config-nodejs-pmb",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "My favorite eslint rules",
   "keywords": [],
 
@@ -20,7 +20,8 @@
   "directories": { "test": "test" },
 
   "dependencies": {
-    "@instaffogmbh/eslint-config-nodejs": "^1.2.8"
+    "@instaffogmbh/eslint-config-nodejs": "^1.2.8",
+    "eslint": "^7.32.0"
   },
   "devDependencies": {
   },

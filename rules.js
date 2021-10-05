@@ -2,26 +2,10 @@
 'use strict';
 
 const instaffo = require('@instaffogmbh/eslint-config-nodejs/rules');
-
-const jsFexts = [...instaffo.settings['import/extensions']];
-jsFexts.mapAppend = function mapAppend(orig) {
-  const normalizedOrig = [].concat(orig).filter(Boolean);
-  function fork(bfn) { return jsFexts.map(fext => bfn + fext); }
-  return normalizedOrig.map(fork).flat();
-};
+const devDepPatterns = require('./devDepPatterns.js');
 
 const extraneousDepsOpts = {
-  devDependencies: [
-    'build/**',
-    ...jsFexts.mapAppend([
-      '**/*.test',
-      '**/test.*',
-      '**/*.spec',
-      '**/.eslintrc',
-      '**/eslintrc',
-      '**/webpack.config',
-    ]),
-  ],
+  devDependencies: devDepPatterns.generate(),
 };
 
 
@@ -57,6 +41,7 @@ const rules = {
 
   // rules docs: https://github.com/eslint/eslint.github.io/tree/master/docs/rules
 };
+
 
 const config = {
   ...instaffo,
