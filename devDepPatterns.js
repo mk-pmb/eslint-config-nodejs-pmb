@@ -15,7 +15,8 @@ const jsGlob = ('.{' + jsFexts.map(s => s.replace(/^\./, '')).join(',') + '}');
 
 function gen() {
   return [
-    'build/**' + jsGlob,
+    'test/**',
+    'build/**',
     '**{/,-,.}test{,s,/**}' + jsGlob,
     '**.spec' + jsGlob,
     '**/{,.}eslintrc.js{,on}',
