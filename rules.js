@@ -35,6 +35,7 @@ const rules = {
   'key-spacing': 'off', // b/c it doesn't support all the combinations I want
   'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
   'import/no-extraneous-dependencies': ['error', extraneousDepsOpts],
+  'padded-blocks': 'off',
 
   // Ugly but unfortunately node v12+ native ESM forces us to:
   'import/extensions': ['error', 'ignorePackages'],
