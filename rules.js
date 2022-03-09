@@ -1,41 +1,70 @@
 ﻿/* -*- tab-width: 2 -*- */
 'use strict';
 
-const instaffo = require('@instaffogmbh/eslint-config-nodejs/rules');
-const devDepPatterns = require('./devDepPatterns.js');
+const configDeps = [
+  ...require('./depsHelper.js'),
+  ...require('./test/expectedPeerDependencies.js'),
+];
+const devDepPatternsGen = require('./devDepPatterns.js');
 
+function uniq(a) { return Array.from(new Set(a)).sort(); }
+
+const jsFextsNoDot = ['js', 'mjs'];
+const devDepPatternsList = devDepPatternsGen.generate({ jsFextsNoDot });
 const extraneousDepsOpts = {
-  devDependencies: devDepPatterns.generate(),
+  devDependencies: devDepPatternsList,
+};
+
+const importFextsNoDot = uniq([...jsFextsNoDot, 'json']);
+const importFextsWithDots = importFextsNoDot.map(x => '.' + x);
+const importSettings = {
+  'import/extensions': importFextsWithDots,
+  'import/resolver': {
+    node: { extensions: importFextsWithDots },
+  },
 };
 
 
+function mustStartWith(p) { return function d(s) { return s.startsWith(p); }; }
+
+const lineLengthRules = {
+  code: 80,
+  ignoreRegExpLiterals: true,
+  ignoreTrailingComments: true,
+  ignoreUrls: true,
+};
+
 const rules = {
-  ...instaffo.rules,
 
   // rules docs: https://github.com/eslint/eslint.github.io/tree/master/docs/rules
 
+  'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
   'consistent-return': 'off',
+  'default-case': 'off',
   'func-names': ['error', 'as-needed'],
+  'function-call-argument-newline': 'off',
   'function-paren-newline': 'off',
+  'global-require': 'off', // deprecated, see 'node/global-require' instead.
+  'import/no-extraneous-dependencies': ['error', extraneousDepsOpts],
+  'key-spacing': 'off', // b/c it doesn't support all the combinations I want
   'lines-around-directive': 'off',
+  'max-len': ['error', lineLengthRules],
   'no-console': 'off',
+  'no-control-regex': 'off',
+  'node/global-require': 'off', // I'd rather exempt just top-level arrays
+  'no-div-regex': 'error',
   'no-extra-semi': 'off',
   'no-multiple-empty-lines': 'off',
   'no-multi-spaces': ['off', { ignoreEOLComments: true }],
+  'no-useless-escape': 'off',   // allow \. in RegExp char group
   'object-curly-newline': 'off',
+  'padded-blocks': 'off',
   'prefer-arrow-callback': 'off',
   'prefer-template': 'off',
-  'semi': ['error', 'always'],
-  'unicode-bom': 'off',
-  'no-control-regex': 'off',
-  'no-useless-escape': 'off',   // allow \. in RegExp char group
-  'no-div-regex': 'error',
   'quote-props': 'off',
-  'default-case': 'off',
-  'key-spacing': 'off', // b/c it doesn't support all the combinations I want
-  'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
-  'import/no-extraneous-dependencies': ['error', extraneousDepsOpts],
-  'padded-blocks': 'off',
+  'semi': ['error', 'always'],
+  'strict': ['error', 'safe'],
+  'unicode-bom': 'off',
 
   // Ugly but unfortunately node v12+ native ESM forces us to:
   'import/extensions': ['error', 'ignorePackages'],
@@ -45,8 +74,44 @@ const rules = {
 
 
 const config = {
-  ...instaffo,
+
+  env: {
+    es6: true,
+    node: true,
+  },
+
+  extends: [
+    ...[
+      ...configDeps.filter(mustStartWith('eslint-config-')),
+    ].map(require.resolve),
+    'plugin:node/recommended',
+  ],
+
+  overrides: [
+    { files: ['**.js'], parserOptions: { sourceType: 'script' } },
+    { files: devDepPatternsList,
+      rules: {
+        'node/no-unpublished-import': 'off',
+      },
+    },
+  ],
+
+  parser: require.resolve('@babel/eslint-parser'),
+  parserOptions: {
+    allowImportExportEverywhere: true,
+    requireConfigFile: false,
+  },
+
+  plugins: [
+    ...configDeps.filter(mustStartWith('eslint-plugin-')),
+  ],
+
   rules,
+
+  settings: {
+    ...importSettings,
+  },
+
 };
 
 module.exports = config;
