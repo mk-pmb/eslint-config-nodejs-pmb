@@ -16,12 +16,13 @@
 
   "private": false, "license": "ISC",
   "main": "rules.js",
-  "scripts": { "test": "nodejs test/all.js" },
+  "scripts": { "test": "eslint --ext=js,mjs . && echo '+OK eslint succeeded.'" },
   "directories": { "test": "test" },
+  "eslintConfig": { "extends": "." },
 
   "dependencies": {
     "@instaffogmbh/eslint-config-nodejs": "^1.2.8",
-    "eslint": "^7.32.0"
+    "eslint": "^8.10.0"
   },
   "devDependencies": {
     "absdir": "^1.0.6",
