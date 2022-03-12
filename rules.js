@@ -73,6 +73,21 @@ const rules = {
 };
 
 
+const overrides = [
+  { files: ['**.js'], parserOptions: { sourceType: 'script' } },
+  { files: ['**.mjs'],
+    rules: {
+      'node/no-unsupported-features/es-syntax': 'off', // assume esmod-pmb
+    },
+  },
+  { files: devDepPatternsList,
+    rules: {
+      'node/no-unpublished-import': 'off',
+    },
+  },
+];
+
+
 const config = {
 
   env: {
@@ -87,14 +102,7 @@ const config = {
     'plugin:node/recommended',
   ],
 
-  overrides: [
-    { files: ['**.js'], parserOptions: { sourceType: 'script' } },
-    { files: devDepPatternsList,
-      rules: {
-        'node/no-unpublished-import': 'off',
-      },
-    },
-  ],
+  overrides,
 
   parser: require.resolve('@babel/eslint-parser'),
   parserOptions: {
