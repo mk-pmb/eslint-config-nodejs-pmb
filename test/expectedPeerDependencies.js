@@ -3,7 +3,7 @@
 
 module.exports = (function depsHelper(require) {
   return [
-    require('eslint-plugin-json-light'),
+    require('eslint-plugin-json-light-pmb'),
     require('eslint-plugin-node'),
   ];
 }(String));
