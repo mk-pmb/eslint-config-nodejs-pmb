@@ -83,6 +83,7 @@ const overrides = [
   { files: devDepPatternsList,
     rules: {
       'node/no-unpublished-import': 'off',
+      'node/no-unpublished-require': 'off',
     },
   },
 ];
