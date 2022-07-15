@@ -44,14 +44,14 @@ const rules = {
   'func-names': ['error', 'as-needed'],
   'function-call-argument-newline': 'off',
   'function-paren-newline': 'off',
-  'global-require': 'off', // deprecated, see 'node/global-require' instead.
+  'global-require': 'off', // deprecated, see 'n/global-require' instead.
   'import/no-extraneous-dependencies': ['error', extraneousDepsOpts],
   'key-spacing': 'off', // b/c it doesn't support all the combinations I want
   'lines-around-directive': 'off',
   'max-len': ['error', lineLengthRules],
   'no-console': 'off',
   'no-control-regex': 'off',
-  'node/global-require': 'off', // I'd rather exempt just top-level arrays
+  'n/global-require': 'off', // I'd rather exempt just top-level arrays
   'no-div-regex': 'error',
   'no-extra-semi': 'off',
   'no-multiple-empty-lines': 'off',
@@ -77,13 +77,13 @@ const overrides = [
   { files: ['**.js'], parserOptions: { sourceType: 'script' } },
   { files: ['**.mjs'],
     rules: {
-      'node/no-unsupported-features/es-syntax': 'off', // assume esmod-pmb
+      'n/no-unsupported-features/es-syntax': 'off', // assume esmod-pmb
     },
   },
   { files: devDepPatternsList,
     rules: {
-      'node/no-unpublished-import': 'off',
-      'node/no-unpublished-require': 'off',
+      'n/no-unpublished-import': 'off',
+      'n/no-unpublished-require': 'off',
     },
   },
 ];
@@ -100,7 +100,7 @@ const config = {
     ...[
       ...configDeps.filter(mustStartWith('eslint-config-')),
     ].map(require.resolve),
-    'plugin:node/recommended',
+    'plugin:n/recommended',
   ],
 
   overrides,

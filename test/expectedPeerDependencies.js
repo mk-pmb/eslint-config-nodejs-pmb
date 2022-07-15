@@ -4,6 +4,6 @@
 module.exports = (function depsHelper(require) {
   return [
     require('eslint-plugin-json-light-pmb'),
-    require('eslint-plugin-node'),
+    require('eslint-plugin-n'),
   ];
 }(String));
