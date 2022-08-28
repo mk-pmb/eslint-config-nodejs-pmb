@@ -14,15 +14,24 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                ver:
-                    -   { node: 16 }
+                versions:
+                    -   { node:  8, eslint: 7 }
+                    -   { node: 10, eslint: 7 }
+                    -   { node: 12, eslint: 7 }
+                    -   { node: 14, eslint: 7 }
+                    -   { node: 16, eslint: 8 }
 
         steps:
             -   uses: actions/checkout@v2
-            -   name: 'Use Node.js ${{ matrix.ver.node }}.x'
+            -   name: 'Use Node.js ${{ matrix.versions.node }}.x'
                 uses: actions/setup-node@v1
                 with:
-                    node-version: ${{ matrix.ver.node }}.x
+                    node-version: '${{ matrix.versions.node }}.x'
+
+            # The npm from node images before v16 seems to not install
+            # Peer dependencies by default, so we have to:
+            -   run: npm install eslint@${{ matrix.versions.eslint }}
+
             -   run: npm install .
             -   run: npm audit
             -   run: npm test
