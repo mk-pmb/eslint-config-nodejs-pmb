@@ -65,6 +65,7 @@ const rules = {
   'semi': ['error', 'always'],
   'strict': ['error', 'safe'],
   'unicode-bom': 'off',
+  'regexp/no-invalid-regexp': 'error',
 
   // Ugly but unfortunately node v12+ native ESM forces us to:
   'import/extensions': ['error', 'ignorePackages'],
@@ -112,6 +113,7 @@ const config = {
   },
 
   plugins: [
+    'regexp',
     ...configDeps.filter(mustStartWith('eslint-plugin-')),
   ],
 
