@@ -49,9 +49,9 @@ const rules = {
   'key-spacing': 'off', // b/c it doesn't support all the combinations I want
   'lines-around-directive': 'off',
   'max-len': ['error', lineLengthRules],
+  'n/global-require': 'off', // I'd rather exempt just top-level arrays
   'no-console': 'off',
   'no-control-regex': 'off',
-  'n/global-require': 'off', // I'd rather exempt just top-level arrays
   'no-div-regex': 'error',
   'no-extra-semi': 'off',
   'no-multiple-empty-lines': 'off',
@@ -62,10 +62,10 @@ const rules = {
   'prefer-arrow-callback': 'off',
   'prefer-template': 'off',
   'quote-props': 'off',
+  'regexp/no-invalid-regexp': 'error',
   'semi': ['error', 'always'],
   'strict': ['error', 'safe'],
   'unicode-bom': 'off',
-  'regexp/no-invalid-regexp': 'error',
 
   // Ugly but unfortunately node v12+ native ESM forces us to:
   'import/extensions': ['error', 'ignorePackages'],
