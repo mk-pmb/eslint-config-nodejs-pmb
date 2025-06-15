@@ -7,6 +7,13 @@ const configDeps = [
 ];
 const devDepPatternsGen = require('./devDepPatterns.js');
 
+const ignorePatterns = [
+  '/build/output/',
+  '/dist.*',
+  '/dist/',
+  'tmp.*',
+];
+
 function uniq(a) { return Array.from(new Set(a)).sort(); }
 
 const jsFextsNoDot = ['js', 'mjs'];
@@ -105,6 +112,7 @@ const config = {
     'plugin:n/recommended',
   ],
 
+  ignorePatterns,
   overrides,
 
   parser: require.resolve('@babel/eslint-parser'),
