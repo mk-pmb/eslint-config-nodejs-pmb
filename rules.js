@@ -60,6 +60,7 @@ const rules = {
   'object-curly-newline': 'off',
   'padded-blocks': 'off',
   'prefer-arrow-callback': 'off',
+  'prefer-destructuring': ['error', { array: false, object: true }],
   'prefer-template': 'off',
   'quote-props': 'off',
   'regexp/no-invalid-regexp': 'error',
