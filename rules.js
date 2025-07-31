@@ -76,7 +76,9 @@ const rules = {
   'unicode-bom': 'off',
 
   // Ugly but unfortunately node v12+ native ESM forces us to:
-  'import/extensions': ['error', 'ignorePackages'],
+  // 'import/extensions': ['error', 'ignorePackages'],
+  // … and due to some 2024-ish breakage in @std/esm, we even need
+  'import/extensions': ['error', 'always'],
 
   // rules docs: https://github.com/eslint/eslint.github.io/tree/master/docs/rules
 };
