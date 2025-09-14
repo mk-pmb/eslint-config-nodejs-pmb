@@ -41,6 +41,13 @@ const lineLengthRules = {
   ignoreUrls: true,
 };
 
+
+const whenToPreferDestructuring = {
+  VariableDeclarator: { array: false, object: true },
+  AssignmentExpression: { array: false, object: false },
+};
+
+
 const rules = {
 
   // rules docs: https://github.com/eslint/eslint.github.io/tree/master/docs/rules
@@ -67,7 +74,7 @@ const rules = {
   'object-curly-newline': 'off',
   'padded-blocks': 'off',
   'prefer-arrow-callback': 'off',
-  'prefer-destructuring': ['error', { array: false, object: true }],
+  'prefer-destructuring': ['error', whenToPreferDestructuring],
   'prefer-template': 'off',
   'quote-props': 'off',
   'regexp/no-invalid-regexp': 'error',
