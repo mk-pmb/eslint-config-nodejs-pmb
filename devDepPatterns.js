@@ -20,6 +20,7 @@ function gen(how) {
     '**{/,-,.}test{,s,/**}' + jsGlob,
     '**/{,.}eslintrc.js{,on}',
     '**/test.*' + jsGlob,
+    '**/vite.config.js',
     '**/webpack.config.js',
   ];
 }
