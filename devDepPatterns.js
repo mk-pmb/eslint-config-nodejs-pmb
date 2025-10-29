@@ -16,10 +16,10 @@ function gen(how) {
   if (devDirs.find(d => nmSub.includes('/' + d + '/'))) { return ['**']; }
   return [
     ...devDirs.map(d => d + '/**'),
-    '**/test.*' + jsGlob,
-    '**{/,-,.}test{,s,/**}' + jsGlob,
     '**.spec' + jsGlob,
+    '**{/,-,.}test{,s,/**}' + jsGlob,
     '**/{,.}eslintrc.js{,on}',
+    '**/test.*' + jsGlob,
     '**/webpack.config.js',
   ];
 }
