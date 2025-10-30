@@ -1,6 +1,6 @@
 { "name": "eslint-config-nodejs-pmb",
-  "version": "0.3.11",
-  "description": "My favorite eslint rules",
+  "version": "0.3.12",
+  "description": "My favorite eslint rules.",
   "keywords": [],
 
   "author": "M.K. (https://github.com/mk-pmb)",
@@ -23,7 +23,8 @@
   "dependencies": {
     "@babel/eslint-parser": "^7.25.9",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-regexp": "^1.15.0"
+    "eslint-plugin-regexp": "^1.15.0",
+    "find-up-package-json-cjs": "^1.0.1"
   },
   "devDependencies": {
     "absdir": "^1.0.6",

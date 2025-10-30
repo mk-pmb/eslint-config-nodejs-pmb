@@ -1,6 +1,9 @@
 ﻿/* -*- tab-width: 2 -*- */
 'use strict';
 
+const userProjectManifest = require('find-up-package-json-cjs').sync().parse();
+
+
 const configDeps = [
   ...require('./depsHelper.js'),
   ...require('./test/expectedPeerDependencies.js'),
@@ -91,8 +94,12 @@ const rules = {
 };
 
 
+
+const defaultSourceType = userProjectManifest.type || 'script';
+
+
 const overrides = [
-  { files: ['**.js'], parserOptions: { sourceType: 'script' } },
+  { files: ['**.js'], parserOptions: { sourceType: defaultSourceType } },
   { files: ['**.mjs'],
     rules: {
       'n/no-unsupported-features/es-syntax': 'off', // assume esmod-pmb
