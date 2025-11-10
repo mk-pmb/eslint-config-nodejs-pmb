@@ -18,6 +18,7 @@ function gen(how) {
     ...devDirs.map(d => d + '/**'),
     '**.spec' + jsGlob,
     '**{/,-,.}test{,s,/**}' + jsGlob,
+    '**/[_.]build' + jsGlob,
     '**/{,.}eslintrc.js{,on}',
     '**/test.*' + jsGlob,
     '**/vite.config.js',
