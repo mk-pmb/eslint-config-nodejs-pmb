@@ -1,5 +1,5 @@
 { "name": "eslint-config-nodejs-pmb",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "My favorite eslint rules.",
   "keywords": [],
 
@@ -30,8 +30,7 @@
     "absdir": "^1.0.6",
     "eslint-plugin-json-light-pmb": "^1.0.7",
     "eslint-plugin-n": "^17.16.2",
-    "p-fatal": "^0.1.5",
-    "safe-sortedjson": "^1.0.8",
+    "safe-sortedjson": "^1.0.9",
     "usnam-pmb": "^0.2.5"
   },
   "peerDependencies": {
@@ -40,5 +39,5 @@
 
 
 
-  "engines": { "npm": ">=7.0.0", "node": ">=16.0.0" }
+  "engines": { "npm": ">=7.0.0", "node": ">=24.0.0" }
 }
