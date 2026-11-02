@@ -20,6 +20,9 @@
   "directories": { "test": "test" },
   "eslintConfig": { "extends": "." },
 
+  "overrides": {
+    "minimatch": "^10.2.6"
+  },
   "dependencies": {
     "@babel/eslint-parser": "^7.25.9",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -29,7 +32,7 @@
   "devDependencies": {
     "absdir": "^1.0.6",
     "eslint-plugin-json-light-pmb": "^1.0.7",
-    "eslint-plugin-n": "^17.16.2",
+    "eslint-plugin-n": "^18.5.0",
     "safe-sortedjson": "^1.0.9",
     "usnam-pmb": "^0.2.5"
   },

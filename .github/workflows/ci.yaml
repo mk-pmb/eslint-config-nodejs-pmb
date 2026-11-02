@@ -4,10 +4,13 @@
 # -*- coding: UTF-8, tab-width: 2 -*-
 ---
 
+name: '☂️ CI tests'
+
 on:
   push:
     branches:
       - '*'
+  workflow_dispatch:
 
 jobs:
   job_npm_test:
@@ -24,7 +27,9 @@ jobs:
         with:
           nodejs_version: ${{ matrix.node-version }}
 
-      - run: ghciu npm install .
+      - run: ghciu npm install --package-lock=true .
+      - run: ghciu eslint --version
+      - run: ghciu npm audit --dry-run --force
       - run: ghciu npm test
 
 
