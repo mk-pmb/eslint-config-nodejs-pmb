@@ -21,14 +21,34 @@ jobs:
         node-version:
           - 24
 
+    env:
+      GHCIU_STEPSUMM_RELEASE_TAG: 'auto-ci-release/${{ github.ref_name }}'
+
     steps:
       - uses: actions/checkout@v6
       - uses: mk-pmb/github-ci-util-2405-pmb/act/install@v1
         with:
           nodejs_version: ${{ matrix.node-version }}
 
-      - run: ghciu npm install .
+      - run: ghciu npm install --package-lock=true .
+      - run: ghciu eslint --version
+      - run: ghciu npm audit --dry-run --force
       - run: ghciu npm test
+      - run: ./test/pack_debug_report.sh
+
+      - name: 'Publish auto-release'
+        if: always()
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: True
+          artifactErrorsFailBuild: True
+          artifacts: 'tmp.rls/*'
+          body: '&nbsp;' # If empty, GitHub would use the commit message.
+          makeLatest: False
+          prerelease: True
+          removeArtifacts: True # Remove old files from release.
+          commit: '${{ github.sha }}'
+          tag: '${{ env.GHCIU_STEPSUMM_RELEASE_TAG }}'
 
 
 ...
