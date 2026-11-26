@@ -10,11 +10,11 @@ function pdr_cli_init () {
   local REPO_DIR="$(readlink -m -- "$BASH_SOURCE"/../..)"
   cd -- "$REPO_DIR" || return $?
 
-  local PFX='tmp.rls'
+  local PFX="$REPO_DIR/tmp.rls"
   mkdir --parents -- "$PFX"
   PFX+='/debug.'
-  zip -r9 "$PFX".node_modules.zip -- node_modules/
-  zip -r9 "$PFX".ghciu_logs.zip -- .ghciu/log*
+  zip -r9 "$PFX".node_modules.zip -- node_modules/ package*.json
+  ( cd .ghciu && zip -r9 "$PFX".ghciu_logs.zip -- log* )
 }
 
 
