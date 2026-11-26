@@ -1,5 +1,5 @@
 { "name": "eslint-config-nodejs-pmb",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "description": "My favorite eslint rules.",
   "keywords": [],
 
@@ -34,7 +34,7 @@
     "usnam-pmb": "^0.2.5"
   },
   "peerDependencies": {
-    "eslint": "^8.13.0"
+    "eslint": "^8.57.1"
   },
 
 
